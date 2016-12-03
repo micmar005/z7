@@ -1,6 +1,4 @@
 <?php
-
-
 $folder   = $_POST['folder'];
 
 $cookie_name = "user";
@@ -13,8 +11,6 @@ if(!mkdir("$folder",0777)){
 }else{echo "Folder został utworzony";}
 	
 ?>
-
-
 
 <form action="zalogowany_klient.php">
 <input type="submit" value="Powrót do panelu użytkownika">

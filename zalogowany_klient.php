@@ -23,7 +23,18 @@ $cur_dir = $_COOKIE[$cookie_name2];
 ?>
 	
 		<form action="odbierz.php" enctype="multipart/form-data" method="POST">
-		Zalogowany jako:  <input type="text" name="user" value="<?php echo $ciasto; ?>" maxlength="10" size="10" readonly><br>
+		Zalogowany jako:  <input type="text" name="user" value="<?php echo $ciasto; ?>" maxlength="10" size="20" readonly><br>
+		
+		Ostatnie nieudane logowanie:  <input type="text" value="<?php 
+		$sql="select data from logi,users where logi.users_id=users.id and log='$ciasto' and czyudane=0 group by data desc limit 1;"; 
+		$result = mysqli_query($conn, $sql);
+				while($row = mysqli_fetch_assoc($result)){
+					$czas = $row['data'];
+					}
+					echo "$czas";
+		
+		?>" maxlength="10" size="30" readonly><br>
+		
 		Wybierz plik do przesłania: 
 			<input type="file" name="plik"/>
 			<input type="submit" value="Wyślij plik"/>

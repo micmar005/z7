@@ -18,7 +18,7 @@ if (IsSet($_POST['user'])) {
 		$res = mysqli_query($conn, $sql);
 		if (mysqli_num_rows($res) > 0) {
 			echo "uzytkownik juz istnieje";
-		}else{
+		}else{//JEŻELI NIE ISTNIEJE TO UTWORZ UZYTKOWNIKA ORAZ JEGO KATALOG
 			mkdir("$user", 0700);
 			$sql = "INSERT INTO users(log,pass) VALUES ('$user','$haslo')" ;      	
 			mysqli_query($conn, $sql);	
